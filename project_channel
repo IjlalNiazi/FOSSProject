@@ -1,0 +1,16 @@
+#!/bin/bash
+while true; do
+	printf "Please choose your channel :\n1 - Regular channel\n2 - Quantum Encrypted channel\n "
+	read INPUT
+	if [ "$INPUT" -eq "1" ]
+	then
+		curl -X GET --silent localhost:8080/channel/1/1 > /dev/null
+		printf "Channel successfully switched to Regular\n"
+	elif [ "$INPUT" -eq "2" ]
+	then
+		curl -X GET --silent localhost:8080/channel/1/2 > /dev/null
+		printf "Channel successfully switched to Quantum Encrypted\n"
+	else
+		printf "Please input the right channel!\n"
+	fi
+done
