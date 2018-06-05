@@ -1,0 +1,41 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Ijlal Ahmed Niazi <ijlalniazi@hotmail.com>, 2018.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-06-05 18:51+0400\n"
+"PO-Revision-Date: 2018-06-05 18:51+0400\n"
+"Last-Translator: Ijlal Ahmed Niazi <ijlalniazi@hotmail.com>\n"
+"Language-Team: Urdu <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: project_ui:24
+msgid "Please choose your channel :"
+msgstr ""
+
+#: project_ui:28
+msgid "1 - Regular channel"
+msgstr ""
+
+#: project_ui:31
+msgid "Quantum Encrypted channel"
+msgstr ""
+
+#: project_ui:31
+msgid "0 - Exit"
+msgstr ""
+
+#: project_ui:31
+msgid "Channel is successfuly switched to :"
+msgstr ""
+
+#: project_ui:31
+msgid "Invalid selection! Please select correct channel and try again"
+msgstr ""
