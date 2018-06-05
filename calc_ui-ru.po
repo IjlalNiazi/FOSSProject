@@ -18,24 +18,24 @@ msgstr ""
 
 #: project_ui:24
 msgid "Please choose your channel :"
-msgstr "براہ مہربانی"
+msgstr "براے مہربانی اپنا چینل منتخب کریں"
 
 #: project_ui:28
 msgid "1 - Regular channel"
-msgstr ""
+msgstr "١	 - حسب معمول چینل"
 
 #: project_ui:31
-msgid "Quantum Encrypted channel"
-msgstr ""
+msgid "2 - Quantum Encrypted channel"
+msgstr "٢ - کوانٹم خفیہ کردہ چینل"
 
 #: project_ui:31
 msgid "0 - Exit"
-msgstr ""
+msgstr "٠ - باہر نکلیں"
 
 #: project_ui:31
 msgid "Channel is successfuly switched to :"
-msgstr ""
+msgstr "تبدیلی کامیاب برائے چینل"
 
 #: project_ui:31
 msgid "Invalid selection! Please select correct channel and try again"
-msgstr ""
+msgstr "غلط انتخاب! برائے مہربانی درست چینل منتخب کریں اور دوبارہ کوشش کریں"
