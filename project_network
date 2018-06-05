@@ -7,7 +7,7 @@ FILE1=/tmp/blkchn-$$
 FILE2=/tmp/blkchn-$$
 ERROR=/tmp/blkchn-err-$$
 PROJECT_CHANNEL=./project_channel
-NCHOSTPORT=`nc $HOST $PORT`
+NCHOSTPORT="nc $HOST $PORT"
 state_file=/tmp/amir-$$
 touch $state_file
 chmod 777 $state_file
