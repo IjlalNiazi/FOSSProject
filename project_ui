@@ -1,19 +1,35 @@
 #!/bin/bash
+# This is the main implementation of the user interfaces and the network functionality
 
+# Declaration of Network variables
 HOST=localhost
 PORT=1234
 
+#Creation of temporary files
 FILE1=/tmp/blkchn-$$
 FILE2=/tmp/blkchn-$$
 ERROR=/tmp/blkchn-err-$$
+
+# Creation of variable for importing file where 'curl' is implemented
 PROJECT_CHANNEL=./project_channel
-NCHOSTPORT="nc $HOST $PORT"
+
+CHANNEL_CMD=project_channel
+
+# Creation of variable for network connection
+# NCHOSTPORT="nc $HOST $PORT"
+
+# Creation of variable to import value of another variable from other file
 state_file=/tmp/amir-$$
 touch $state_file
 chmod 777 $state_file
 
+# Selection of simple dialog or gdialog as per the installed utility
 which gdialog 2> /dev/null && DIALOG=gdialog || DIALOG=dialog
 
+# Declaring variable for localization
+GETTEXT="gettext -d project_ui"
+
+# Termination of program
 end () {
 	rm -f $FILE1 $FILE2 $ERROR $state_file
 	exit
@@ -22,32 +38,13 @@ end () {
 while true
 do
 
+# For the execution of TUI
 	if [ `basename $0` = "project_ui" ]
 	then
 		 printf "Please choose your channel :\n1 - Regular channel\n2 - Quantum Encrypted channel\n0 - Exit\n "
 		read INPUT
-
-	elif [ `basename $0` = "project_gui" ]
-	then
-		$DIALOG --inputbox "Please choose your channel :\n1 - Regular channel\n2 - Quantum Encrypted channel\n0 - Exit\n " 10 60 2> $FILE1
-		INPUT=$(cat $FILE1)
-
-	elif [ `basename $0` = "project_network" ]
-	then
-		printf "Please choose your channel :\n1 - Regular channel\n2 - Quantum Encrypted channel\n0 - Exit\n "
-		read INPUT
-		if [ "$INPUT" = "0" ]
-		then 
-		end
-		fi
-		echo $INPUT | $NCHOSTPORT
-	
-	fi
-
-	if [ `basename $0` = "project_ui" -o `basename $0` = "project_gui" ]
-	then
-
-
+		
+		# Calling of other file with curl command if TUI is executed 
 		echo $INPUT | $PROJECT_CHANNEL $state_file
 		JSTATE=$(cat $state_file)
 		
@@ -64,6 +61,57 @@ do
 		printf "\n\nInvalid selection! Please select correct channel and try again\n\n"
 		fi
 
+# For execution of GUI
+	elif [ `basename $0` = "project_gui" ]
+	then
+		$DIALOG --inputbox "`$GETTEXT \"Please choose your channel :\"`\\n`$GETTEXT \"1 - Regular channel\"`\\n`$GETTEXT \"2 - Quantum Encrypted channel\"`\\n`$GETTEXT \"0 - Exit\"`\\n" 10 60 2> $FILE1
+		INPUT=$(cat $FILE1)
+		
+		# Calling of other file with curl command if GUI is executed
+		echo $INPUT | $PROJECT_CHANNEL $state_file
+		JSTATE=$(cat $state_file)
+		
+		if [ "$JSTATE" = "0" ]
+		then
+		end
+	
+		elif [ "$JSTATE" = "1" ]
+		then
+		$DIALOG --msgbox "`$GETTEXT \"Channel is successfuly switched to :\"` $INPUT" 10 60
+
+		elif [ "$JSTATE" = "2" ]
+		then 
+		$DIALOG --msgbox "`$GETTEXT \"Invalid selection! Please select correct channel and try again\"`" 10 60
+		fi
+
+# For exeution of Network features
+	elif [ `basename $0` = "project_network" ]
+	then
+		$DIALOG --inputbox "`$GETTEXT \"Please choose your channel :\"`\\n`$GETTEXT \"1 - Regular channel\"`\\n`$GETTEXT \"2 - Quantum Encrypted channel\"`\\n`$GETTEXT \"0 - Exit\"`\\n" 10 60 2> $FILE1
+		INPUT=$(cat $FILE1)
+		#if [ "$INPUT" = "0" ]
+		#then 
+		#end
+		#echo $INPUT | $NCHOSTPORT
+		CHANNEL_CMD="nc $HOST $PORT"
+		# Calling of other file with curl command if GUI is executed
+		echo $INPUT | $CHANNEL_CMD $state_file
+		JSTATE=$(cat $state_file)
+		
+		if [ "$JSTATE" = "0" ]
+		then
+		end
+	
+		elif [ "$JSTATE" = "1" ]
+		then
+		$DIALOG --msgbox "`$GETTEXT \"Channel is successfuly switched to :\"` $INPUT" 10 60
+
+		elif [ "$JSTATE" = "2" ]
+		then 
+		$DIALOG --msgbox "`$GETTEXT \"Invalid selection! Please select correct channel and try again\"`" 10 60
+		fi
+	
 	fi
 	
+
 done
