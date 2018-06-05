@@ -1,16 +1,18 @@
 #!/bin/bash
-while true; do
-	printf "Please choose your channel :\n1 - Regular channel\n2 - Quantum Encrypted channel\n "
+	state_file=$1
+	JSTATE=5
 	read INPUT
-	if [ "$INPUT" -eq "1" ]
+	if [ "$INPUT" = "0" ]
 	then
-		curl -X GET --silent localhost:8080/channel/1/1 > /dev/null
-		printf "Channel successfully switched to Regular\n"
-	elif [ "$INPUT" -eq "2" ]
+		 JSTATE=0
+	elif [ "$INPUT" = "1" -o "$INPUT" = "2" ]
 	then
-		curl -X GET --silent localhost:8080/channel/1/2 > /dev/null
-		printf "Channel successfully switched to Quantum Encrypted\n"
+		curl -X GET --silent localhost:8080/channel/1/$INPUT > /dev/null
+		 JSTATE=1
 	else
-		printf "Please input the right channel!\n"
+		 JSTATE=2
 	fi
-done
+
+	echo $JSTATE > $state_file
+
+

@@ -1,0 +1,11 @@
+# default: on
+# description: Switching Server
+service project_channel
+{
+	flags		= REUSE
+	socket_type	= stream        
+	wait		= no
+	user		= nobody
+	server		= /usr/local/bin/project_channel
+	disable		= no
+}
