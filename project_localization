@@ -15,6 +15,13 @@ which gdialog 2> /dev/null && DIALOG=gdialog || DIALOG=dialog
 # Declaring variable for localization
 GETTEXT="gettext -d project_ui"
 
+# Menu for displaying user
+MENU_T="`$GETTEXT \"Switching of Channels\"`"
+MENU_H="`$GETTEXT \"Please choose your channel\"`"
+MENU_1="`$GETTEXT \"Regular Channel\"`"
+MENU_2="`$GETTEXT \"Quantum Encrypted Channel\"`"
+MENU_0="Exit"
+
 # Termination of program
 end () {
 	rm -f $FILE1 $FILE2 $ERROR $state_file
@@ -24,20 +31,11 @@ end () {
 while true
 do
 
-		$DIALOG --inputbox "`$GETTEXT \"Please choose your channel :\"`\\n`$GETTEXT \"1 - Regular channel\"`\\n`$GETTEXT \"2 - Quantum Encrypted channel\"`\\n`$GETTEXT \"0 - Exit\"`\\n" 10 60 2> $FILE1 || end
+		$DIALOG --title "$MENU_T" --menu "$MENU_H" 10 60 2 1 "$MENU_1" 2 "$MENU_2" 2> $FILE1 || end
 		INPUT=$(cat $FILE1)
-		
-		if [ "$INPUT" = "0" ]
-		then
-		end
-	
-		elif [ "$INPUT" = "1" -o "$INPUT" = "2" ]
-		then
-		echo $INPUT | $PROJECT_CHANNEL
-		$DIALOG --msgbox "`$GETTEXT \"Channel is successfuly switched to :\"` $INPUT" 10 20 && end
 
-		else
-		$DIALOG --msgbox "`$GETTEXT \"Invalid selection! Please select correct channel and try again\"`" 20 20
-		fi
+		echo $INPUT | $PROJECT_CHANNEL
+		$DIALOG --msgbox "`$GETTEXT \"Channel is successfuly switched to :\"` $INPUT" 10 20
+
 
 done

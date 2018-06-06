@@ -17,16 +17,20 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: project_ui:24
-msgid "Please choose your channel :"
+msgid "Switching of Channels"
+msgstr "چینلز کی تبدیلی"
+
+#: project_ui:24
+msgid "Please choose your channel"
 msgstr "براے مہربانی اپنا چینل منتخب کریں"
 
 #: project_ui:28
-msgid "1 - Regular channel"
-msgstr "١ - حسب معمول چینل"
+msgid "Regular Channel"
+msgstr "حسب معمول چینل"
 
 #: project_ui:31
-msgid "2 - Quantum Encrypted channel"
-msgstr "٢ - کوانٹم خفیہ کردہ چینل"
+msgid "Quantum Encrypted Channel"
+msgstr "کوانٹم خفیہ کردہ چینل"
 
 #: project_ui:31
 msgid "0 - Exit"

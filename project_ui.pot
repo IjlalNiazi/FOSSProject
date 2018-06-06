@@ -17,15 +17,19 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: project_ui:24
-msgid "Please choose your channel :"
+msgid "Switching of Channels"
+msgstr ""
+
+#: project_ui:24
+msgid "Please choose your channel"
 msgstr ""
 
 #: project_ui:28
-msgid "1 - Regular channel"
+msgid "Regular Channel"
 msgstr ""
 
 #: project_ui:31
-msgid "Quantum Encrypted channel"
+msgid "Quantum Encrypted Channel"
 msgstr ""
 
 #: project_ui:31
