@@ -1,18 +1,9 @@
 #!/bin/bash
-	state_file=$1
-	JSTATE=5
+
 	read INPUT
-	if [ "$INPUT" = "0" ]
-	then
-		 JSTATE=0
-	elif [ "$INPUT" = "1" -o "$INPUT" = "2" ]
-	then
-		curl -X GET --silent localhost:8080/channel/1/$INPUT > /dev/null
-		 JSTATE=1
-	else
-		 JSTATE=2
-	fi
+		
+	curl -X GET --silent localhost:8080/channel/1/$INPUT > /dev/null
+	EXIT_STATUS=$?
 
-	echo $JSTATE > $state_file
-
+	exit $EXIT_STATUS
 
