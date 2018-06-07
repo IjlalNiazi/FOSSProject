@@ -1,5 +1,5 @@
 install: project_ui-ur.mo
-	install project_channel project_ui /usr/local/bin
+	install project_channel project_ui project_localization /usr/local/bin
 	which gdialog >/dev/null 2>&1 || install gdialog /usr/local/bin
 	grep -q "`cat project.services`" /etc/services || cat project.services >> /etc/services
 	install project.xinetd /etc/xinetd.d/project_channel
